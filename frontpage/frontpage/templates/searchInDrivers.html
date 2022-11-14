@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block head %} {{ super() }}
+<style type="text/css">
+  .list-group-flush > .list-group-item:last-child {
+    border-bottom-width: 1px !important;
+  }
+  .hiden-link {
+    z-index: 4;
+    --bs-text-opacity: 0;
+  }
+  .hiden-link:hover {
+    --bs-text-opacity: 1 !important;
+  }
+</style>
+{% endblock %} {% block main %}
+<div class="mx-md-3 my-4 row">
+  <h1 class="display-4 fw-normal text-center">Accidents History Searching Tools</h1>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h2>Search accidents from drivers</h2>
+        <form method="POST" action="/searchInDrivers">
+          <p>Please type userId: 
+              <input type="text" name="userid"> 
+              <input type="submit" value="Search">
+          </p>
+        </form>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Driving Age</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for value in data_users %}
+            <tr>
+              <td>{{ value['name'] }}</td>
+              <td>{{ value['age'] }}</td>
+              <td>{{ value['driving_age'] }}</td>
+            </tr>
+            <p>Note: Please click <a href="/tool">Tools</a> in bar if you want to search in another way.</p>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        {% for value in data_users %}
+        <div class="card" style="max-width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Personal Information</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Driver Name: {{ value['name'] }}</h6>
+            
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+
+            <a href="/base" class="card-link">Add an accident for this driver</a>
+          </div>
+        </div>
+        {% endfor %}
+
+
+      </div>
+      <div class="col">
+        <h2>Search accidents from vehicles</h2>
+        <form method="POST">
+          <p>Please type vehicle plate number: 
+              <input type="text" name="plate_num"> 
+              <input type="submit" value="Search">
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  {% endblock %}
+
+
+
+<!-- <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+</div> -->
+
+
+  <!-- {% for value in data %}
+  <p>
+    Your personal information: Age:{{ value['age'] }}
+  </p>
+  {% endfor %} -->
+  

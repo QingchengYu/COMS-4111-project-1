@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}" />
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    
+    <title>NY Accidents System</title>
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="px-2" href="/">
+            <img alt="logo" src="{{ url_for('static', filename='logo.png') }}" style="width: 40px; height: 40px" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/base">HomePage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/tool">Tools</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/stats">Statistics</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      {% block main %}
+        <div class="my-5 text-center">
+          <h1 class="display-4 fw-normal">Welcome to New York Accidents System</h1>
+          <div class="container col-lg-8">
+            <p class="lead fw-normal">A system that is designed for NY traffic management department which support uplaod, query and statistics functions.</p>
+           </div>
+          <a target="_blank" class="btn btn-outline-secondary" href="https://github.com/Jennywhj/project1">Coming soon (view the github)</a>
+        </div>
+      
+
+    
+      
+      <p><a href="/tool">Go to the other page</a></p>
+      <p><a href="/insert">Go to the insert page</a></p>
+    
+
+
+
+      <div>
+        <div class="text-center">
+            <h3>The latest vehicle accidents records</h3>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Plate Number</th>
+              <th scope="col">Time</th>
+              <th scope="col">City</th>
+              <th scope="col">Street</th>
+              <th scope="col">Results</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            {% for value in data %}
+            <tr>
+              <td>{{ value['plate_number'] }}</td>
+              <td>{{ value['time'] }}</td>
+              <td>{{ value['city'] }}</td>
+              <td>On {{ value['on_street'] }}, Cross {{ value['cross_street'] }},  Out {{ value['out_street'] }}</td>
+              <td>Death: {{ value['death'] }} Injured: {{ value['injured'] }}</td>
+            </tr>
+            
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+        
+        
+    
+        <!-- <form method="POST" action="/add">
+        <p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
+        </form> -->
+
+        {% endblock %}
+    </main>
+  </body>
+  <!-- <body class="bd-dark">
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="--bs-bg-opacity: 0.95">
+        <div class="container-fluid">
+          <a class="px-2" href="/"><img alt="logo" src="{{ url_for('static', filename='logo.png') }}" style="width: 40px; height: 40px" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/anotherfile">Tools</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/info">Info/Github</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/team">Team</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/facility">Facility</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <footer class="container py-5">
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <h5 class="text-secondary">Pages</h5>
+          <ul class="list-unstyled">
+            <li><a class="link-secondary" href="/anotherfile">Tools</a></li>
+            <li><a class="link-secondary" href="/info">Info/Github</a></li>
+            <li><a class="link-secondary" href="/team">Team</a></li>
+            <li><a class="link-secondary" href="/facility">Facility</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body> -->
+</html>
+

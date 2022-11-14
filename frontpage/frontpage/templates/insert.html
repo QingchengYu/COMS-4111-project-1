@@ -1,0 +1,55 @@
+
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Traffic History Insert</h1>
+  <!-- <div>{{data}}</div> -->
+
+  
+
+<!-- <form method="POST" action="/add">
+<p>Name of new computer scientist: <input type="text" name="name"> <input type="submit" value="Add"></p>
+</form> -->
+
+<form method="POST" action="/insert">
+    <p>Please type your information as follows: 
+      <ul>
+        <li>Crash Time<input type="text" name="data"> Example: 6/30/2022 0:17</li>
+        <li>Location
+          <ul>
+            <li>Coordinate<input type="text" name="coordinate"></li>
+            <li>Ziocode<input type="text" name="zipcode"></li>
+            <li>City<input type="text" name="city">Example: Bronx</li>
+            <li>On Street<input type="text" name="on_street"></li>
+            <li>Cross Street<input type="text" name="cross_street"></li>
+            <li>Out Street<input type="text" name="out_street"></li>
+          </ul>
+        </li>
+        <li>Results
+          <ul>
+            <li>Injured Number<input type="text" name="injured"></li>
+            <li>Death Number<input type="text" name="death"></li>
+          </ul>
+        </li>
+        <input type="submit" value="Add">
+      </ul>
+    </p>
+</form>
+
+<!-- <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+</div> -->
+
+</body>
+
+
+</html>

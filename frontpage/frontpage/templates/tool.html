@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block head %} {{ super() }}
+<style type="text/css">
+  .list-group-flush > .list-group-item:last-child {
+    border-bottom-width: 1px !important;
+  }
+  .hiden-link {
+    z-index: 4;
+    --bs-text-opacity: 0;
+  }
+  .hiden-link:hover {
+    --bs-text-opacity: 1 !important;
+  }
+</style>
+{% endblock %} {% block main %}
+<div class="mx-md-3 my-4 row">
+  <h1 class="display-4 fw-normal text-center">Accidents History Searching Tools</h1>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h2>Search accidents from drivers</h2>
+        <form method="POST" action="/searchInDrivers">
+          <p>Please type userId: 
+              <input type="text" name="userid"> 
+              <input type="submit" value="Search">
+          </p>
+        </form>
+
+      </div>
+      <div class="col">
+        <h2>Search accidents from vehicles</h2>
+        <form method="POST" action="/searchInVehicles">
+          <p>Please type vehicle plate number: 
+              <input type="text" name="plate_num"> 
+              <input type="submit" value="Search">
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+  
+<nav aria-label="Page">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+  {% endblock %}
+
+
+
+<!-- <div>
+    {% for n in data %}
+    <div>{{n}}</div>
+    {% endfor %}
+</div> -->
+
+
+  
